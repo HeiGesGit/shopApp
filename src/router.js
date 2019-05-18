@@ -8,7 +8,7 @@ import ShopcarContainer from './components/tabbar/ShopcarContainer.vue'
 import NewsList from './components/news/NewsList.vue'
 import NewsInfo from './components/news/NewsInfo.vue'
 import Photo from './components/photos/PhotoList.vue'
-
+import img from './components/photos/photos.vue'
 
 const router = new VueRouter({
   routes: [
@@ -20,6 +20,7 @@ const router = new VueRouter({
     { path: '/home/newslist', component: NewsList},
     { path: '/home/newsinfo/:id', component: NewsInfo},
     { path: '/home/photolist', component: Photo}
+    // { path: '/home/photolist/item1mobile', component:img }
 
   ],
   linkActiveClass: 'mui-active'   //覆盖默认路由高亮

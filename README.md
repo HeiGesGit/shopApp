@@ -98,7 +98,11 @@
                   a.sudo cnpm i babel-plugin-transform-remove-strict-mode -D
                   b..babelrc文件在plugins中添加
                     "transform-remove-strict-mode"
-  
 
+## 解决手机调试  
+  1. 保证手机和电脑连接的同一个wifi
+  2. 打开自己项目中pack.json文件,在dev脚本调价host指令,通过host指令，把当前电脑的wifi 地址，设置为--host的指令值
+    + 查看自己的ip，打开wifi设置，就有一个ip地址
+  3. 
 
 

@@ -9,3 +9,4 @@ node_modules
 .kingsoft
 .less-history-file:
 .search
+.DS_Store

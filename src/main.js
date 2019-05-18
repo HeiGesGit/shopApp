@@ -7,6 +7,7 @@ import app from "./app.vue"
 
 
 
+
 //按需导入组件
 import { Header,Swipe, SwipeItem, Button } from 'mint-ui';
 import 'mint-ui/lib/style.css';
