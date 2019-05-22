@@ -105,4 +105,26 @@
     + 查看自己的ip，打开wifi设置，就有一个ip地址
   3. 
 
+## 图片列表可以使用懒加载
+ 1. 图片列表需要使用懒加载技术，可以使用minti-ui 提供现成的组件‘lazy-load’
+ 2. 根据‘lazy-load’的使用文档，尝试使用
+ 3. 渲染图片列表数据
 
+
+ ## 实现图片列表的懒加载和样式美化
+
+
+ ## 实现点击图片跳转图片详情界面
+  1. 在改造li成router-link的时候，需要指定tag属性渲染为哪种元素
+
+
+
+ ## 实现图片详情页面布局和美化,同时获取数据渲染页面
+ 
+## 使用缩略图 
+    1. 安装包
+      sudo cnpm i vue-preview -S
+    2. 在main。js中导入
+      import VuePreview from 'vue-preview'
+      Vue.use(VuePreview)
+    3. 报错发现

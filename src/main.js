@@ -9,7 +9,7 @@ import app from "./app.vue"
 
 
 //按需导入组件
-import { Header,Swipe, SwipeItem, Button } from 'mint-ui';
+import { Header,Swipe, SwipeItem, Button, Lazyload } from 'mint-ui';
 import 'mint-ui/lib/style.css';
 
 //导入mui的样式
@@ -42,12 +42,15 @@ Vue.filter('dataFormat', function (dataStr, pattern = 'YYYY-MM-DD HH:mm:ss') {
 
 
 
+import VuePreview from 'vue-preview'
+// defalut install
+Vue.use(VuePreview) 
 
 Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 Vue.component(Button.name, Button);
-
+Vue.use(Lazyload);
 
 var vm = new Vue({
   el: '#app',

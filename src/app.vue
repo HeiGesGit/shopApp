@@ -47,7 +47,6 @@
   overflow-x: hidden;
   padding-bottom: 50px;
 }
-
 .v-enter{
   opacity: 0;
   transform: translateX(100%)
@@ -90,5 +89,12 @@
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.mint-header.is-fixed {
+    top: 0;
+    right: 0;
+    left: 0;
+    position: fixed;
+    z-index: 10000;
 }
 </style>

@@ -9,6 +9,8 @@ import NewsList from './components/news/NewsList.vue'
 import NewsInfo from './components/news/NewsInfo.vue'
 import Photo from './components/photos/PhotoList.vue'
 import img from './components/photos/photos.vue'
+import photoinfo from './components/photos/photoinfo.vue'
+
 
 const router = new VueRouter({
   routes: [
@@ -19,8 +21,9 @@ const router = new VueRouter({
     { path: '/search', component: SearchContainer },
     { path: '/home/newslist', component: NewsList},
     { path: '/home/newsinfo/:id', component: NewsInfo},
-    { path: '/home/photolist', component: Photo}
-    // { path: '/home/photolist/item1mobile', component:img }
+    { path: '/home/photolist', component: Photo},
+    { path: '/home/photoinfo/:id', component: photoinfo}
+
 
   ],
   linkActiveClass: 'mui-active'   //覆盖默认路由高亮

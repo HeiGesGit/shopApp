@@ -40,7 +40,8 @@ module.exports = {
           }
         }
       },
-      { test: /\.js$/, use: "babel-loader", exclude: /node_modules/ }   //这是配置babel来转化高级语法
+      { test: /\.js$/, use: "babel-loader", exclude: /node_modules/ },   //这是配置babel来转化高级语法
+      { test: /vue-preview.src.*?js$/,loader: 'babel-loader' },
     ]
   }
 
