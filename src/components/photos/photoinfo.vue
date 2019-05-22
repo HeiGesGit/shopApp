@@ -10,7 +10,7 @@
       <hr>
 
       <!-- 缩略图 -->
-      <div class="thumbs">
+      <div class="thumbs" style="width: 100px; background-color: pink;">
         <vue-preview :slides="list" @close="handleClose" >
         </vue-preview>
       </div>
