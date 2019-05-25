@@ -1,26 +1,28 @@
 <template>
   <div>
-    <!-- 顶部滑动条区域 -->
-    <div id="slider" class="mui-slider mui-content">
-      <div
-        id="sliderSegmentedControl"
-        class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted"
-        data-scroll="1"
-      >
-        <div class="mui-scroll" style="transform: translate3d(0px, 0px, 0px) translateZ(0px);">
+    <!-- swipe横向滚动组件组件 -->
+    <div class="swiper-custom">
+      <swiper :options="swiperOption">
+        <swiper-slide v-for="slide in tabbarList" :key="slide.id" class="swiper-slide">
+          <!-- :class="['mui-control-item', slide.id==1  ? 'mui-active' : '']" -->
           <a
-            :class="['mui-control-item', item.id==1  ? 'mui-active' : '']"
-            v-for="item in tabbarList"
-            :key="item.id"
-            @click="getphotolist(item.id)"
-          >{{ item.msg }}</a>
-        </div>
-      </div>
+            @click="getphotolist(slide.id)"
+            :class="['mystyle', slide.id==1  ? 'mystyle-active' : '']"
+            id="selfslide"
+            ref="a"
+          >{{ slide.msg }}</a>
+        </swiper-slide>
+      </swiper>
     </div>
 
     <div class="post-list">
       <ul>
-        <router-link v-for="item in picslist" :key="item.id" :to="'/home/photoinfo/'+item.id" tag="li"> 
+        <router-link
+          v-for="item in picslist"
+          :key="item.id"
+          :to="'/home/photoinfo/'+item.id"
+          tag="li"
+        >
           <img v-lazy="item.img">
           <div class="info">
             <div class="info-title">{{ item.title }}</div>
@@ -32,14 +34,22 @@
 </template>
 
 <script>
-import mui from "../../lib/mui/js/mui.js";
-// mui('body').on('tap','a',function(){document.location.href=this.href;});
+
+// 导入swiper组件
+import "swiper/dist/css/swiper.css";
+import { swiper, swiperSlide } from "vue-awesome-swiper";
 
 export default {
   data() {
     return {
       tabbarList: [],
-      picslist: []
+      picslist: [],
+      swiperOption: {
+        pagination: {
+          el: ".swiper-pagination"
+        },
+        slidesPerView: 5 //一次显示5张图片
+      }
     };
   },
   created() {
@@ -65,6 +75,22 @@ export default {
         }
       });
     }
+  },
+  components: {
+    swiper: swiper,
+    "swiper-slide": swiperSlide
+  },
+  mounted() {
+    $(function() {
+      $("a#selfslide").on("click", function() {
+        $(this)
+          .addClass("mystyle-active")
+          .parent()
+          .siblings()
+          .children()
+          .removeClass("mystyle-active");
+      });
+    });
   }
 };
 </script>
@@ -86,14 +112,14 @@ export default {
       box-shadow: 0 0 6px #999;
       position: relative;
       img {
-        width: 320px;
-        height: 152px;
+        width: 97%;
+        height: 100%;
         margin: 5px;
         vertical-align: middle;
       }
       img[lazy="loading"] {
-        width: 320px;
-        height: 152px;
+        width: 97%;
+        height: 100%;
         background-color: black;
       }
       .info {
@@ -111,4 +137,29 @@ export default {
     }
   }
 }
+.swiper-custom {
+  background-color: #efeff4;
+  .swiper-slide {
+    text-align: center;
+    font-size: 15px;
+    height: 38px;
+    .mystyle {
+      transition: background-color 0.1s linear;
+      text-align: center;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      line-height: 38px;
+      color: #000;
+      display: inline-block;
+      width: auto;
+      padding: 0 25px;
+    }
+    .mystyle-active {
+      color: #007aff;
+    }
+  }
+}
 </style>
+
+

@@ -128,3 +128,6 @@
       import VuePreview from 'vue-preview'
       Vue.use(VuePreview)
     3. 报错发现
+
+## 绘制商品列表
+  

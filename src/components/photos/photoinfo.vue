@@ -29,12 +29,7 @@
 import comment from "../subComponents/comment.vue";
 import $ from 'jquery';
 
-$(function () {
-  $("img").click(function(){
-    console.log("okk");
-    $('img').css('width','300');
-  });
-})
+
 
 export default {
   data() {

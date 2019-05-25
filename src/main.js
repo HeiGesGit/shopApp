@@ -46,6 +46,19 @@ import VuePreview from 'vue-preview'
 // defalut install
 Vue.use(VuePreview) 
 
+
+// 1.导入vue-awesome-swiper 插件
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
+Vue.use(VueAwesomeSwiper)
+
+
+import $ from 'jquery'
+
+
+//导入bootstrapcss样式表
+// import 'bootstrap/dist/css/bootstrap.min.css';
+
 Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);

@@ -23,6 +23,11 @@ module.exports = {
       template: path.join(__dirname, './src/index.html'), //指定模板页面，将来根据指定的页面路径，去生成内存中的页面
       filename: 'index.html'  //指定生成的页面的名称
     }),
+    new webpack.ProvidePlugin({
+      $:'jquery',
+      jQuery: 'jquery',
+      "window.jQuery":'jquery'
+    })
     
   ],
   module: {   //这个节点用于配置所有的第三方模块加载器
