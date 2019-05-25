@@ -27,6 +27,9 @@ export default {
   props: ['max'],
   watch: {
     //属性监听
+    'max': function (newVal, oldVal) {
+      mui(".mui-numbox").numbox().setOption('max', newVal)
+    }
   }
 
   //父组件向子组件传值:
