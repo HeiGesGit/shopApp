@@ -1,7 +1,15 @@
 <template>
-  <div class="mui-numbox" data-numbox-min="1" :data-numbox-max="max">
+  <div class="mui-numbox" data-numbox-min="1" style="height:25px;width:110px">
     <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-    <input id="test" class="mui-input-numbox" type="number" value="1" @change="countChange" ref="numbox">
+    <input
+      id="test"
+      class="mui-input-numbox"
+      type="number"
+      :value="initcount"
+      @change="countChange"
+      readonly
+      ref="numbox"
+    >
     <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
   </div>
 </template>
@@ -15,22 +23,18 @@ export default {
   },
   mounted() {
     mui(".mui-numbox").numbox();
-    console.log(this.max);
   },
   methods: {
-    countChange(){
-      // 每当文本框的数据被修改的时候，立即把最新的数据，通过时间调用，传递给父组件
+    countChange() {
+      //数量改变
       // console.log(this.$refs.numbox.value);
-      this.$emit('getcount', parseInt(this.$refs.numbox.value))
+      this.$store.commit("updateGoodsinfo", {
+        id: this.goodsid,
+        count: this.$refs.numbox.value
+      });
     }
   },
-  props: ['max'],
-  watch: {
-    //属性监听
-    'max': function (newVal, oldVal) {
-      mui(".mui-numbox").numbox().setOption('max', newVal)
-    }
-  }
+  props: ["initcount", "goodsid"]
 
   //父组件向子组件传值:
   // 1.父组件传递给子组件，
@@ -38,7 +42,6 @@ export default {
   // 3.子组件渲染数据
 
   // Vuex安装
-  
 };
 </script> 
 

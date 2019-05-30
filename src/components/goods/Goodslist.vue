@@ -33,7 +33,7 @@
       <div class="info">
         <p class="price">
           <span class="now">￥{{ item.newpri }}</span>
-          <span class="old">￥{{ item.lodpri }}</span>
+          <span class="old">￥{{ item.oldpri }}</span>
         </p>
         <p class="sell">
           <span>热卖中</span>

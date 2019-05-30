@@ -46,7 +46,7 @@
             <!-- 
               分析：有上面的number是子组件，所有调用子组件的商品数量需要向子组件传值，
               在父组件定义一个方法,同时吧数据作为参数传递给这个方法，
-             -->
+            -->
           </div>
         </div>
       </div>
@@ -84,7 +84,7 @@ export default {
       goodsparam: {},
       id: this.$route.params.id,
       ballFlag: false, //控制小球隐藏和显示的标识符
-      seleceCount: 1  //保存用户商品选中的数量
+      selectedCount: 1 //保存用户商品选中的数量
     };
   },
   created() {
@@ -109,6 +109,16 @@ export default {
     addToShopCar() {
       //添加到购物车
       this.ballFlag = !this.ballFlag;
+      // { id: '商品id', count: '要购买的数量', price: '商品单价', seleted: 'true' }
+      // 拼接出一个要保存的state中car数组的商品信息对象
+      var goodsinfo = {
+        id: this.id,
+        count: this.selectedCount,
+        price: this.goodsparam.nowpri,
+        selected: true
+      };
+      // 调用store中的mutations 来将商品加入购物车
+      this.$store.commit("addToCar", goodsinfo);
     },
     beforeEnter(el) {
       el.style.transform = "translate(0, 0)";
@@ -135,7 +145,6 @@ export default {
       const xDist = badegePosition.left - ballPosition.left;
       const yDist = badegePosition.top - ballPosition.top;
 
-
       el.style.transform = `translate(${xDist}px, ${yDist}px)`;
       el.style.transition = "all 0.5s cubic-bezier(.17,.67,.83,.67)";
       done();
@@ -143,13 +152,11 @@ export default {
     afterEnter(el) {
       this.ballFlag = !this.ballFlag;
     },
-    getSelectCount(count){
+    getSelectCount(count) {
       //当子组件吧选中的数量传递给父组件的时候，把选中的值保存到data上
-      this.seleceCount = count;
-      console.log("父组件拿到的数量值是"+ this.seleceCount);
-
+      this.selectedCount = count;
+      console.log("父组件拿到的数量值是" + this.selectedCount);
     }
-
   },
   components: {
     swiper: swiper,
